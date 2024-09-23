@@ -22,7 +22,7 @@ def quote(request):
     return render(request, 'quotes/quote.html', {'quote': random_quote, 'image': random_image})
 
 def show_all(request):
-    return render(request, 'quotes/showall.html', {'quotes': quotes_list, 'images': images_list})
+    return render(request, 'quotes/show_all.html', {'quotes': quotes_list, 'images': images_list})
 
 def about(request):
     return render(request, 'quotes/about.html')
