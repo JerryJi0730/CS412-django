@@ -19,10 +19,10 @@ images_list = [
 def quote(request):
     random_quote = random.choice(quotes_list)
     random_image = random.choice(images_list)
-    return render(request, 'quote.html', {'quote': random_quote, 'image': random_image})
+    return render(request, 'quotes/quote.html', {'quote': random_quote, 'image': random_image})
 
 def show_all(request):
-    return render(request, 'showall.html', {'quotes': quotes_list, 'images': images_list})
+    return render(request, 'quotes/showall.html', {'quotes': quotes_list, 'images': images_list})
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'quotes/about.html')
