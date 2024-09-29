@@ -12,7 +12,7 @@ header {
     text-align: center;
 }
 
-nav a {
+nav li {
     color: #fff;
     margin: 0 1rem;
     text-decoration: none;

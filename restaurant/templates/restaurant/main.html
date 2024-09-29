@@ -1,0 +1,13 @@
+<!-- formdata/templates/formdata/form.html -->
+{% extends 'restaurant/base.html' %}
+{% load static %}
+{% block content %}
+<div class="main">
+<h1>Hello there! Welcome to Pizza House</h1>
+<ul></ul>
+    <li>Monday - Friday: 11:00 AM - 10:00 PM</li>
+    <li>Saturday - Sunday: 9:00 AM - 11:00 PM</li>
+</ul>
+<img src="{% static 'download.jpeg' %}" alt="Restaurant Photo" height="300px" width="400px">
+</div>
+{% endblock %}

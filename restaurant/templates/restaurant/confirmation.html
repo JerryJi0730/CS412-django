@@ -1,0 +1,24 @@
+<!-- formdata/templates/formdata/confirmation.html -->
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+   <div class="main">
+    
+    <h2>Order Confirmation</h2>
+    <p>Thank you, {{ customer_name }}! Your order is confirmed.</p>
+    <p>Order will be ready by {{ ready_time }}.</p>
+    
+    <h3>Ordered Items</h3>
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    
+    <p>Total Price: ${{ total_price }}</p>
+    
+    <p>We will contact you at {{ customer_phone }} or {{ customer_email }} if needed.</p>
+   </div>
+
+
+{% endblock %}

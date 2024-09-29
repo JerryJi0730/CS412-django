@@ -1,0 +1,54 @@
+<!-- formdata/templates/formdata/form.html -->
+{% extends 'restaurant/base.html' %}
+
+
+{% block content %}
+<div class="main">
+    <h2>Order Form</h2>
+    <form method="POST" action="{% url 'confirmation' %}">
+        {% csrf_token %}
+        
+        <p>Today's Special: {{ daily_special }}</p>
+        <p>Note: {{ special_instruction }}</p>
+    
+        <label for="name">Your Name:</label>
+        <input type="text" name="name" required><br>
+    
+        <label for="phone">Your Phone:</label>
+        <input type="tel" name="phone" required><br>
+    
+        <label for="email">Your Email:</label>
+        <input type="email" name="email" required><br>
+    
+        <h3>Menu Items</h3>
+    
+        <!-- Pizza Menu Item -->
+        <input type="checkbox" name="items" value="Pizza">
+        <label>Pizza - $10.00</label><br>
+        <label>Options:</label>
+        <select name="options_pizza">
+            <option value="None">None</option>
+            <option value="Extra Cheese">Extra Cheese</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Mushrooms">Mushrooms</option>
+        </select><br>
+    
+        <!-- Burger Menu Item -->
+        <input type="checkbox" name="items" value="Burger">
+        <label>Burger - $8.00</label><br>
+        <!-- Salad Menu Item -->
+        <input type="checkbox" name="items" value="Salad">
+        <label>Salad - $7.00</label><br>
+    
+        <!-- Daily Special -->
+        <input type="checkbox" name="items" value="Spaghetti Bolognese">
+        <label>Daily Special: {{ daily_special }} - $2.00</label><br>
+    
+        <label for="instructions">Special Instructions:</label>
+        <textarea name="instructions"></textarea><br>
+    
+        <input type="submit" value="Place Order">
+    </form>
+</div>
+
+{% endblock %}

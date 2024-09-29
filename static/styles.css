@@ -3,19 +3,41 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    color: black;
 }
 
 header {
-    background-color: #333;
+    background-color: black;
     color: #fff;
     padding: 1rem;
     text-align: center;
 }
 
-nav a {
-    color: #fff;
-    margin: 0 1rem;
-    text-decoration: none;
+.sidenav {
+    height: 100vh; /* Full height */
+    width: 250px; /* Width of the sidenav */
+    background-color: #333; /* Background color */
+    padding-top: 20px; /* Space at the top */
+    position: fixed; /* Fixed position */
+}
+
+/* Links inside the sidenav */
+.sidenav a {
+    padding: 15px 20px; /* Space around the text */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size */
+    color: white; /* Text color */
+    display: block; /* Block display for stacking */
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+    background-color: #575757; /* Change background on hover */
+}
+.main {
+    margin-left: 260px; /* Space for the sidenav */
+    padding: 20px; /* Space around the content */
+    flex: 1; /* Flex-grow to fill remaining space */
 }
 
 footer {
