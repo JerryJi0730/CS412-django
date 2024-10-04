@@ -1,0 +1,23 @@
+<!-- formdata/templates/formdata/base.html -->
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+       <header>
+        <h1>Face Book</h1> </header>
+        <div  class="sidenav">
+            <nav>
+                <!-- <li><a href="/restaurant/main"> Main page</a></li>
+                <li><a href="/restaurant/order"> Order page</a></li> -->
+            </nav>
+        </div>
+
+    {% block content %}
+    {% endblock %}
+    
+    <!-- <hr>
+    The current time is {{current_time}}. -->
+    </body>
+</html>
