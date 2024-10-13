@@ -8,7 +8,9 @@
 <h1>All acounts</h1>
 {% for a in profiles %}
 <div class="grid-container">
+     <a href="{% url 'show_profile' a.pk %}"> 
     <img src="{{a.profile_image_url}}" alt="{{a.profile_image_url}}" style="height: 300px;">
+    </a>
     <div>
     <h2>{{a.first_name}} {{a.last_name}}</h2>
     <h2>email: {{a.email_address}}</h2>

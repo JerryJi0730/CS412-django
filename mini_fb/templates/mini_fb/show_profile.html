@@ -1,0 +1,42 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+  <div class="main">
+    <h1>{{ profile.first_name }} {{ profile.last_name }}'s Profile</h1>
+    
+    <!-- Display a larger profile image -->
+    <div class="profile-image">
+      <img src="{{ profile.profile_image_url }}" alt="{{ profile.first_name }}" style="width:200px; height:200px;">
+    </div>
+
+    <!-- Display profile information in a table -->
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td>{{ profile.first_name }}</td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td>{{ profile.last_name }}</td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td>{{ profile.city }}</td>
+      </tr>
+      <tr>
+        <th>Email Address</th>
+        <td>{{ profile.email_address }}</td>
+      </tr>
+    </table>
+    <h2>Status Messages</h2>
+    <div class="status-messages">
+      {% for status in profile.get_status_messages %}
+        <div class="status-message">
+          <p><strong>{{ status.timestamp }}</strong>: {{ status.message }}</p>
+        </div>
+        {% empty %}
+        <p>No status messages available.</p>
+      {% endfor %}</div>
+  </div>
+
+{% endblock %}
