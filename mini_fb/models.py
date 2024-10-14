@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 class Profile(models.Model):
     '''Encapsulate the idea of an Article by some author.'''
     # data attributes of a Article:
@@ -15,6 +16,9 @@ class Profile(models.Model):
     def get_status_messages(self):
         '''Retrieve all status messages for this Profile.'''
         return StatusMessage.objects.filter(profile=self).order_by('-timestamp')
+    def get_absolute_url(self):
+        '''Return the URL to access a detail record for this profile.'''
+        return reverse('show_profile', kwargs={'pk': self.pk})
 
 class StatusMessage(models.Model):
     timestamp = models.DateTimeField(auto_now=True)  
@@ -24,4 +28,7 @@ class StatusMessage(models.Model):
     def __str__(self):
         '''Return a string representation of this StatusMessage object.'''
         return f'Status from {self.profile}: "{self.message}" at {self.timestamp}'
+    def get_absolute_url(self):
+        '''Return the URL to access a detail record for this profile.'''
+        return reverse('show_profile', kwargs={'pk': self.pk})
 # Create your models here.

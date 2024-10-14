@@ -37,6 +37,9 @@
         {% empty %}
         <p>No status messages available.</p>
       {% endfor %}</div>
+      <h4><a href="{% url 'create_status' profile.pk %}">
+        Add a comment</a>
+    </h4>
   </div>
 
 {% endblock %}
