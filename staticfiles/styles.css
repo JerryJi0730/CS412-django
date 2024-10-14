@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: grey;
     margin: 0;
     padding: 0;
     color: black;
@@ -19,6 +19,7 @@ header {
     background-color: #333; /* Background color */
     padding-top: 20px; /* Space at the top */
     position: fixed; /* Fixed position */
+    overflow-y: auto;
 }
 
 /* Links inside the sidenav */
@@ -43,4 +44,15 @@ header {
 footer {
     text-align: center;
     margin-top: 2rem;
+}
+
+div.grid-container{
+    background: #eee;
+    max-width: 900px;
+    display: grid;
+    /* grid-template-columns: 300px 300px 300px; */
+    grid-template-columns: repeat(3, 1fr);
+     grid-gap: 10px;
+    max-width: 1200px;
+    margin: 20px auto;
 }
