@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Profile
 from django.views.generic import ListView
 from django.views.generic import DetailView
-from django.views.generic import CreateView
+from django.views.generic import CreateView,UpdateView,DeleteView
 from . forms import *
 from django.urls import reverse ## NEW
 class ShowAllProfilesView(ListView):
@@ -72,8 +72,42 @@ class CreateStatusMessageView(CreateView):
         # attach the article to the new Comment 
         # (form.instance is the new Comment object)
         form.instance.profile= profile
-
+        sm = form.save()
+        files = self.request.FILES.getlist('files')
+        for file in files:
+            image = Image(image_file=file, status_message=sm)
+            image.save()
         # delegaute work to the superclass version of this method
         return super().form_valid(form)
+    
+class UpdateProfileView(UpdateView):
+    model = Profile
+    form_class = UpdateProfileForm
+    template_name = 'mini_fb/update_profile_form.html'
+    
+    # This function will redirect the user to the profile page after a successful update
+    def get_success_url(self):
+        return reverse('show_profile', kwargs={'pk': self.object.pk})
+    
+class DeleteStatusMessageView(DeleteView):
+    model = StatusMessage
+    template_name = 'mini_fb/delete_status_form.html'
+    context_object_name = 'StatusMessage'
 
-    # what to do after form subm
+    def get_success_url(self):
+        # Redirect to the profile page for the user who created this status message
+        return reverse('show_profile', kwargs={'pk': self.object.profile.pk})
+    
+class UpdateStatusMessageView(UpdateView):
+    model = StatusMessage
+    form_class = UpdateStatusMessageForm
+    template_name = 'mini_fb/update_status_form.html'  # Template for the update form
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['update'] = True  # Add a context variable if needed for conditional rendering
+        return context
+    
+    def get_success_url(self):
+        # Redirect to the profile page for the user who created this status message
+        return reverse('show_profile', kwargs={'pk': self.object.profile.pk})

@@ -1,0 +1,31 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<div class="main">
+
+  <h2>Update Profile</h2>
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+    
+        <tr>
+            <th>City</th>
+            <td><input type="text" name="city" value="{{profile.city}}"></td>
+        </tr>
+        
+        <tr>
+            <th>Email</th>
+            <td><input type="email" name="email_address" value="{{profile.email_address}}"></td>
+        </tr>
+        
+        <tr>
+            <th>Image URL</th>
+            <td><input type="url" name="profile_image_url" value="{{profile.profile_image_url}}"></td>
+        </tr>
+    </table>
+    <button type="submit">Save Changes</button>
+  </form>
+  
+  <a href="{% url 'show_profile' pk=object.pk %}">Cancel</a>
+</div>
+{% endblock %}

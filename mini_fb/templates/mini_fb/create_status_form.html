@@ -4,7 +4,7 @@
 <div class="main">
 <h2>Add a new Comment  </h2>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <!-- display the form (context variable) -->
     <!-- {{form}} -->
 
@@ -15,15 +15,23 @@
     {{form.as_table}}
 
     <tr>
-        <td></td>
+        <td>    <!-- <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="file" name="files" multiple>
+            <button type="submit">Post Status</button>
+        </form> --></td>
         <td>
             <!-- we need to add the submit button ourselves -->
             <input type="submit" name="Create Status">
+            <input type="file" name = "files" multiple />
             {% csrf_token %}
         </form>
     </td>
     </tr>
     </table>
+
+
 </div>
 
 {% endblock %}

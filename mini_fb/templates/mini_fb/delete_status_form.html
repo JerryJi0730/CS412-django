@@ -1,0 +1,18 @@
+<!-- blog/templates/blogs/create_comment_form.html -->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+<div class="main">
+    <h2>Are you sure you want to delete this status message?</h2>
+    <p>{{ StatusMessage.message }}</p>
+    
+    <form method="POST" action="{% url 'delete_status' StatusMessage.pk %}">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+    
+    <form method="get" action="{% url 'show_profile' StatusMessage.profile.pk %}">
+        <button type="submit">Cancel</button>
+    </form>
+</div>
+
+{% endblock %}
