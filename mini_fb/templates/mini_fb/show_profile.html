@@ -37,6 +37,37 @@
         <td>{{ profile.email_address }}</td>
       </tr>
     </table>
+    <h2>{{profile.first_name}}'s Friends</h2>
+    <a href="{% url 'friend_suggestions' profile.pk %}"style="
+    display: inline-block; 
+    text-decoration: none; 
+    background-color: #28a745; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s;">View Friend Suggestions</a>
+    <a href="{% url 'news_feed' profile.pk %}"style="
+    display: inline-block; 
+    text-decoration: none; 
+    background-color: #28a745; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s;">View News Feed</a>
+<ul>
+  {% if profile.get_friends %}
+    {% for friend in profile.get_friends %}
+      <li><a href="{% url 'show_profile' friend.pk %}">{{ friend.first_name}}{{friend.last_name}}</a></li>
+      <img src="{{friend.profile_image_url}}" alt="{{friend.profile_image_url}}" style="height: 300px;">
+    {% endfor %}
+  {% else %}
+    <p>This profile has no friends yet.</p>
+  {% endif %}
+</ul>
     <h2>Status Messages</h2>
     <div class="status-messages">
       {% for status in profile.get_status_messages %}

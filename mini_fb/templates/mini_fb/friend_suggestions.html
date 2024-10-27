@@ -1,0 +1,38 @@
+{% extends 'mini_fb/base.html' %}
+{% load static %}
+<h1>Showing all Articles</h1>
+
+{% block content %}
+{{ profile }}
+<div class="main">
+<h2>Friend Suggestions</h2>
+<a href="{% url 'show_profile' profile.pk %} "style="
+display: inline-block; 
+text-decoration: none; 
+background-color: #28a745; 
+color: white; 
+padding: 10px 20px; 
+border-radius: 4px; 
+cursor: pointer; 
+font-size: 16px; 
+transition: background-color 0.3s;">Back to profile page</a>
+<ul>
+    {% for suggestion in friend_suggestions %}
+    <li>
+        <a href="{% url 'show_profile' suggestion.pk %}">{{ suggestion.first_name}} {{suggestion.last_name}}</a>
+        <img src="{{suggestion.profile_image_url}}" alt="{{suggestion.profile_image_url}}" style="height: 300px;">
+        <a href="{% url 'add_friend' profile.pk suggestion.pk %}"style="
+        display: inline-block; 
+        text-decoration: none; 
+        background-color: #28a745; 
+        color: white; 
+        padding: 10px 20px; 
+        border-radius: 4px; 
+        cursor: pointer; 
+        font-size: 16px; 
+        transition: background-color 0.3s;">Add Friend</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}
