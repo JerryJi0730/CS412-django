@@ -8,7 +8,8 @@
     <div class="profile-image">
       <img src="{{ profile.profile_image_url }}" alt="{{ profile.first_name }}" style="width:200px; height:200px;">
     </div>
-    <a href="{% url 'update_profile' profile.pk %}"style="
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'update_profile' %}"style="
     display: inline-block; 
     text-decoration: none; 
     background-color: #28a745; 
@@ -18,6 +19,7 @@
     cursor: pointer; 
     font-size: 16px; 
     transition: background-color 0.3s;">Update Profile</a>
+    {% endif %}
     <!-- Display profile information in a table -->
     <table>
       <tr>
@@ -38,7 +40,8 @@
       </tr>
     </table>
     <h2>{{profile.first_name}}'s Friends</h2>
-    <a href="{% url 'friend_suggestions' profile.pk %}"style="
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'friend_suggestions'  %}"style="
     display: inline-block; 
     text-decoration: none; 
     background-color: #28a745; 
@@ -48,7 +51,7 @@
     cursor: pointer; 
     font-size: 16px; 
     transition: background-color 0.3s;">View Friend Suggestions</a>
-    <a href="{% url 'news_feed' profile.pk %}"style="
+    <a href="{% url 'news_feed' %}"style="
     display: inline-block; 
     text-decoration: none; 
     background-color: #28a745; 
@@ -58,6 +61,7 @@
     cursor: pointer; 
     font-size: 16px; 
     transition: background-color 0.3s;">View News Feed</a>
+     {% endif %}
 <ul>
   {% if profile.get_friends %}
     {% for friend in profile.get_friends %}
@@ -76,6 +80,7 @@
           {% for img in status.get_images %}
           <img src='{{img.image_file.url}}' alt='{{img.image_file.url}}'>
           {% endfor %}
+          {% if request.user.is_authenticated %}
           <a href="{% url 'delete_status' status.pk %}"style="
           display: inline-block; 
           text-decoration: none; 
@@ -96,13 +101,16 @@
           cursor: pointer; 
           font-size: 16px; 
           transition: background-color 0.3s;">Update</a>
+          {% endif %}
         </div>
         {% empty %}
         <p>No status messages available.</p>
 
       {% endfor %}</div>
-      <h4><a href="{% url 'create_status' profile.pk %}">
+      {% if request.user.is_authenticated %}
+      <h4><a href="{% url 'create_status' %}">
         Add a comment</a>
+        {% endif %}
     </h4>
   </div>
 

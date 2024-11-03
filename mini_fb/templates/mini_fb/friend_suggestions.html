@@ -21,7 +21,7 @@ transition: background-color 0.3s;">Back to profile page</a>
     <li>
         <a href="{% url 'show_profile' suggestion.pk %}">{{ suggestion.first_name}} {{suggestion.last_name}}</a>
         <img src="{{suggestion.profile_image_url}}" alt="{{suggestion.profile_image_url}}" style="height: 300px;">
-        <a href="{% url 'add_friend' profile.pk suggestion.pk %}"style="
+        <a href="{% url 'add_friend'  suggestion.pk %}"style="
         display: inline-block; 
         text-decoration: none; 
         background-color: #28a745; 
