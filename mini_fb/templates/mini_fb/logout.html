@@ -1,0 +1,10 @@
+
+<!-- blog/templats/blog/login.html -->
+{% extends 'mini_fb/base.html' %}
+{% block content %}
+<div class="main">
+<h1>You have logged out</h1>
+<!-- a very basic authentication form -->
+<a href="{% url 'show_all_profiles' %}">Back to all profiles</a>.
+</div>
+{% endblock %}

@@ -12,11 +12,12 @@
                 <li><a href="/mini_fb/"> Show all Profiles</a></li>
                 {% if request.user.is_authenticated %}
                 <li><a href="/mini_fb/create_profile"> Create Profile</a></li>
-                <a><form method="POST" action="{% url 'logout' %}">
+                <!-- <a><form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <input type="submit" value="Logout">
                 </form>
-            </a>
+            </a> -->
+            <li><a href="/mini_fb/logout"> Log out</a></li>
                 {% else %}
             <a href="{% url 'login' %}">Login</a> 
             {% endif %}

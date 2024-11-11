@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("quotes/", include("quotes.urls")), ## new path
     path("restaurant/", include("restaurant.urls")),
-    path('mini_fb/', include('mini_fb.urls'))
+    path('mini_fb/', include('mini_fb.urls')),
+    path('voter_analytics/', include('voter_analytics.urls'))
 ] +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
