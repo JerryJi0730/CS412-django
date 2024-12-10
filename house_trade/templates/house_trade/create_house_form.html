@@ -4,7 +4,7 @@
 <div class="main">
 <h2>Add a new house for sell  </h2>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <!-- display the form (context variable) -->
     <!-- {{form}} -->
 
@@ -20,6 +20,9 @@
             <!-- we need to add the submit button ourselves -->
             <input type="submit" name="Create House">
             {% csrf_token %}
+        </form>
+        <form action="{% url 'show_all_houses' %}">
+            <input type="submit" name="Cancel" value="Cancel">
         </form>
     </td>
     </tr>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ShowAllHousesView ,CreateHouseView,ShowSellerPageView,ShowAllBuyersView,ShowBuyerPageView,UpdateCommentView,DeleteCommentsView# our view class definition 
+from .views import ShowAllHousesView ,CreateHouseView,ShowSellerPageView,ShowAllBuyersView,ShowBuyerPageView,UpdateCommentView,DeleteCommentsView,CreateBuyerView# our view class definition 
 from . import views
 from django.contrib.auth import views as auth_views ## NEW
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
      path('register/', views.RegistrationView.as_view(), name="register"), ## NEW
     path('comments/<int:pk>/update/', UpdateCommentView.as_view(), name='status_update'),
     path('status/<int:pk>/delete/', DeleteCommentsView.as_view(), name='delete_comment'),
+    path('create_buyer', CreateBuyerView.as_view(), name="create_buyer"), ## NEW
 ]

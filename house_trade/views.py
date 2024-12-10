@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin ## NEW
 from house_trade.models import House,Seller,Buyer,Comment
 from . forms import *
 from django.contrib.auth.forms import UserCreationForm ## NEW
-from django.urls import reverse ## NEW
+from django.urls import reverse, reverse_lazy ## NEW
 from django.contrib.auth import login ## NEW
 from django.shortcuts import get_object_or_404, redirect, render
 # Create your views here.
@@ -42,9 +42,36 @@ class CreateHouseView(LoginRequiredMixin,CreateView):
 
     form_class = CreateHouseForm
     template_name = "house_trade/create_house_form.html"
+    success_url = reverse_lazy('show_all_houses')
+    # def get_success_url(self) -> str:
+    #     '''return the URL to redirect to after sucessful create'''
+    #     pk=self.get_object().pk
+    #     return reverse("show_all_houses")
     def get_login_url(self) -> str:
         '''return the URL required for login'''
         return reverse('login') 
+    
+    def form_valid(self, form):
+        # find which user is logged in
+        user = self.request.user
+        print(f'CreateArticleView:form_valid() user={user}')
+        # attach the user  to the new article instance
+        form.instance.user = user
+        # delegate work to superclass
+        return super().form_valid(form)
+    
+class CreateBuyerView(LoginRequiredMixin,CreateView):
+    '''a view to show/process the create Buyer form:
+    on GET: sends back the form
+    on POST: read the form data, create an instance of Comment; save to database; ??
+    '''
+
+    form_class = CreateBuyerForm
+    template_name = "house_trade/create_buyer_form.html"
+    success_url = reverse_lazy('show_all_buyers')
+    def get_login_url(self) -> str:
+        '''return the URL required for login'''
+        return reverse('show_all_houses') 
     
     def form_valid(self, form):
         # find which user is logged in
@@ -89,7 +116,7 @@ def house_detail_view(request, house_id):
 
 class RegistrationView(CreateView):
     '''Display and process the UserVreationForm for account registration.'''
-    template_name = 'mini_fb/register.html'
+    template_name = 'house_trade/register.html'
     form_class = UserCreationForm
     def dispatch(self, *args, **kwargs):
         '''Handle the User creation process.'''
@@ -112,7 +139,7 @@ class RegistrationView(CreateView):
             print(f"RegistrationView.dispatch, user {user} is logged in.")
             ## mini_fb note: attach user to Profile creation form before saving.
             # redirect the user to some page view...
-            return redirect(reverse('create_profile'))
+            return redirect(reverse('create_buyer'))
         # let the superclass CreateView handle the HTTP GET request:
         return super().dispatch(*args, **kwargs)
     

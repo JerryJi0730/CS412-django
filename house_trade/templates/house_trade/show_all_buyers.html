@@ -5,6 +5,16 @@
 {{ buyer }}
 <div class="main">
 <h1>All active buyers</h1>
+<a href="{% url 'create_buyer' %}"style="
+display: inline-block; 
+text-decoration: none; 
+background-color: #28a745; 
+color: white; 
+padding: 10px 20px; 
+border-radius: 4px; 
+cursor: pointer; 
+font-size: 16px; 
+transition: background-color 0.3s;">Join as a buyer</a>
 {% for a in buyers %}
 <div class="grid-container">
     <img src="{{a.photo.url}}" alt="{{a.profile_image_url}}" style="height: 300px;">
