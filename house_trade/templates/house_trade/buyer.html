@@ -1,0 +1,37 @@
+{% extends 'house_trade/base.html' %}
+
+{% block content %}
+  <div class="main">
+    <h1>{{ buyer.first_name }} Contact Information</h1>
+    
+    <!-- Display a larger profile image -->
+    <!-- Display profile information in a table -->
+    <table>
+        <img src="{{buyer.photo.url}}" alt="{{a.profile_image_url}}" style="height: 300px;">
+      <tr>
+        <th>Buyer's name</th>
+        <td>{{ buyer.first_name }} {{ buyer.last_name }}</td>
+      </tr>
+      <tr>    
+        <th>Email</th>
+        <td>{{ buyer.email }}</td>
+      </tr>
+      <tr>
+        <th>Cellphone</th>
+        <td>{{ buyer.phone }}</td>
+      </tr>
+      <tr>
+        <th>Joined date</th>
+        <td>{{ buyer.date_joined }}</td>
+      </tr>
+      <tr>
+        <th>Description of dream house </th>
+        <td>{{ buyer.description}}</td>
+      </tr>
+    </table>
+
+<ul>
+</ul>
+  </div>
+
+{% endblock %}

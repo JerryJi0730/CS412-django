@@ -56,3 +56,79 @@ div.grid-container{
     max-width: 1200px;
     margin: 20px auto;
 }
+/* General form styles */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Form inputs and labels */
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  /* Focus state for inputs */
+  form input:focus,
+  form textarea:focus,
+  form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Button styles */
+  form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add some spacing for error or success messages */
+  form .message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 480px) {
+    form {
+      padding: 15px;
+    }
+    
+    form button {
+      font-size: 14px;
+    }
+  }
+  

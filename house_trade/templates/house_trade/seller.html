@@ -1,0 +1,32 @@
+{% extends 'house_trade/base.html' %}
+
+{% block content %}
+  <div class="main">
+    <h1>{{ seller.company_name }} Contact Information</h1>
+    
+    <!-- Display a larger profile image -->
+    <!-- Display profile information in a table -->
+    <table>
+      <tr>
+        <th>Contact Person</th>
+        <td>{{ seller.contact_person }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ seller.email }}</td>
+      </tr>
+      <tr>
+        <th>Cellphone</th>
+        <td>{{ seller.phone }}</td>
+      </tr>
+      <tr>
+        <th>Joined date</th>
+        <td>{{ buyer.phone }}</td>
+      </tr>
+    </table>
+
+<ul>
+</ul>
+  </div>
+
+{% endblock %}

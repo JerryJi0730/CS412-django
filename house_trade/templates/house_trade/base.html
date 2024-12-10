@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+       <header>
+        <h1>House Trade Center</h1> </header>
+        <div  class="sidenav">
+            <nav>
+                <li><a href="/house_trade/"> All Houses</a></li>
+                <li><a href="/house_trade/show_all_buyers"> All buyers</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="/house_trade/create_house"> Sell a house</a></li>
+
+
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Logout">
+                </form>
+                {% else %}
+            <a href="{% url 'login' %}">Login</a> 
+            {% endif %}
+            <p>
+                {% if request.user.is_authenticated %}
+                Logged in user: {{request.user}}
+                {% else %}
+                Not logged in.
+                {% endif %}
+            </p>
+            </nav>
+        </div>
+
+    {% block content %}
+    {% endblock %}
+    
+    <!-- <hr>
+    The current time is {{current_time}}. -->
+    </body>
+</html>

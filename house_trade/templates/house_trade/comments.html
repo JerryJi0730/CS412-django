@@ -1,0 +1,35 @@
+{% extends 'house_trade/base.html' %}
+{% block content %}
+<div class="main">
+    <h1>Comments for {{ house.title }}</h1>
+    {% for comment in house.get_comments %}
+    <div class="comment">
+        <p><strong>{{ comment.created_at|date:"F j, Y, g:i a" }}</strong>: {{ comment.content }}</p>
+        <p>Author: {{ comment.author_name }}</p>
+        <a href="{% url 'status_update' comment.pk %}"style="
+          display: inline-block; 
+          text-decoration: none; 
+          background-color: #28a745; 
+          color: white; 
+          padding: 10px 20px; 
+          border-radius: 4px; 
+          cursor: pointer; 
+          font-size: 16px; 
+          transition: background-color 0.3s;">Update</a>
+           <a href="{% url 'delete_comment' comment.pk %}"style="
+           display: inline-block; 
+           text-decoration: none; 
+           background-color: red; 
+           color: white; 
+           padding: 10px 20px; 
+           border-radius: 4px; 
+           cursor: pointer; 
+           font-size: 16px; 
+           transition: background-color 0.3s;">Delete</a>
+    </div>
+    {% endfor %}
+    {% if not house.get_comments %}
+    <p>No comments have been posted yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

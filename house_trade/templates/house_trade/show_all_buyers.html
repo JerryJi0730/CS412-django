@@ -1,0 +1,22 @@
+{% extends 'house_trade/base.html' %}
+{% load static %}
+
+{% block content %}
+{{ buyer }}
+<div class="main">
+<h1>All active buyers</h1>
+{% for a in buyers %}
+<div class="grid-container">
+    <img src="{{a.photo.url}}" alt="{{a.profile_image_url}}" style="height: 300px;">
+    <div>
+        <h2><strong> Name:</strong> </h2>{{ a.first_name }}{{a.last_name}}
+        <h2><strong>📝 Description:</strong> </h2>{{ a.description }}
+        <a href="{% url 'buyer' a.pk %}"> 
+            Contact the buyer now!
+            </a>
+
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

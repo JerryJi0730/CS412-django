@@ -1,0 +1,29 @@
+{% extends 'house_trade/base.html' %}
+{% load static %}
+<h1>All houses on-sale</h1>
+
+{% block content %}
+{{ house }}
+<div class="main">
+<h1>All houses</h1>
+{% for a in houses %}
+<div class="grid-container">
+    <a href="{% url 'house_comments' a.pk %}"> 
+        <img src="{{a.picture.url}}" alt="{{a.profile_image_url}}" style="height: 300px;">
+        </a>
+
+    <div>
+        <h2><strong>🏠 House Name:</strong> </h2>{{ a.title }}
+        <h2><strong>📝 Description:</strong> </h2>{{ a.description }}
+        <h2><strong>💲 Price:</strong> </h2>{{ a.price }}
+        <h2><strong>📍 Location:</strong> </h2>{{ a.location }}
+        <h2><strong> Seller:</strong> </h2>{{ a.seller.company_name }}
+        <a href="{% url 'seller' a.seller.pk %}"> 
+            Contact the seller now!
+            </a>
+
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

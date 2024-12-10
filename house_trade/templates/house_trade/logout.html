@@ -1,0 +1,11 @@
+
+<!-- blog/templats/blog/login.html -->
+{% extends 'house_trade/base.html' %}
+{% block content %}
+<div class="main">
+<h1>You have logged out</h1>
+<!-- a very basic authentication form -->
+ 
+<a href="{% url 'show_all_houses' %}">Back to all houses</a>.
+</div>
+{% endblock %}
